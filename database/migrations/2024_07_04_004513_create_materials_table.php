@@ -12,10 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('materials', function (Blueprint $table) {
-            $table->id('codigo'); // Renombramos el id a codigo
-            $table->string('unidadMedida'); 
-            $table->string('descripcion'); 
+            $table->id('codigo');
+            $table->string('unidadMedida');
+            $table->string('descripcion');
             $table->string('ubicacion');
+            $table->foreignId('categoria_id')->constrained()->onDelete('cascade'); 
             $table->timestamps();
         });
     }
