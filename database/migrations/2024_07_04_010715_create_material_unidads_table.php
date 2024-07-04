@@ -4,24 +4,23 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateMaterialUnidadsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('material_unidads', function (Blueprint $table) {
-            $table->id();
+            $table->id('idMaterialUnidad'); // Llave primaria
+            $table->integer('cantidad');
+            $table->unsignedBigInteger('idUnidad')->nullable(); // Llave foránea opcional
             $table->timestamps();
+
+            // Definir la llave foránea
+            $table->foreign('idUnidad')->references('idUnidad')->on('unidads')->onDelete('set null');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('material_unidads');
     }
-};
+}

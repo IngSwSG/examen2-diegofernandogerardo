@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class MaterialUnidad extends Model
 {
     use HasFactory;
+
+    protected $primaryKey = 'idMaterialUnidad'; // Especificar la llave primaria
+    protected $fillable = ['cantidad', 'idUnidad'];
+
+    public function unidad()
+    {
+        return $this->belongsTo(Unidad::class, 'idUnidad');
+    }
 }
+
