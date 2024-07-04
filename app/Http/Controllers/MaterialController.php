@@ -72,38 +72,35 @@ class MaterialController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($codigo)
+    public function edit($id)
     {
-        $material = Material::findOrFail($codigo);
-    
+        $material = Material::findOrFail($id);
+
         return view('Material.edit', [
             'material' => $material,
             'categorias' => Categoria::all()
         ]);
     }
-    
-    public function update(Request $request, $codigo)
+
+    public function update(Request $request, $id)
     {
-        $material = Material::findOrFail($codigo);
-    
+        $material = Material::findOrFail($id);
+
         $data = $request->validate([
             'descripcion' => 'required',
             'unidadMedida' => 'required',
             'ubicacion' => 'required',
             'categoria_id' => 'required'
         ]);
-    
+
         $material->update($data);
-    
+
         return redirect()->route('materials.index');
     }
-    
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Material $material)
+    public function destroy($id)
     {
+        $material = Material::findOrFail($id);
         $material->delete();
 
         return redirect()->route('materials.index');

@@ -10,3 +10,5 @@ Route::resource('materials', MaterialController::class);
 });*/
 Route::get('/materials/create', [MaterialController::class, 'create'])->name('materials.create');
 Route::post('/materiales/store', [MaterialController::class, 'store'])->name('materiales.store');
+Route::get('/materials/{material}/edit', [MaterialController::class, 'edit'])->name('materials.edit');
+
