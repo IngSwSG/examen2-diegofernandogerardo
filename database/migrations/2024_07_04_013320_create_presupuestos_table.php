@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('presupuestos', function (Blueprint $table) {
             $table->id();
+            $table->integer('codigoPresupuesto')->unique();
+            $table->string('nombrePresupuesto');
             $table->timestamps();
         });
     }
