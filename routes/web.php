@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MaterialController;
 
-Route::get('/materials', [MaterialController::class, 'index']);
+Route::resource('materials', MaterialController::class);
 
 /*Route::get('/', function () {
     return view('welcome');
