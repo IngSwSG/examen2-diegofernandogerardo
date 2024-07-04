@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Material;
 
 class MaterialController extends Controller
 {
@@ -12,7 +13,11 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        // Obtiene la lista de materiales con sus categorías asociadas
+          $materials = Material::with('categoria')->get();
+
+        // Retorna la lista de materiales
+        return response()->json($materials);
     }
 
     /**
