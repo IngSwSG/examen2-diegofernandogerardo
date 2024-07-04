@@ -13,11 +13,9 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        // Obtiene la lista de materiales con sus categorías asociadas
-          $materials = Material::with('categoria')->get();
+         $materiales = Material::all(); 
 
-        // Retorna la lista de materiales
-        return response()->json($materials);
+         return view('index', compact('materiales'));
     }
 
     /**
